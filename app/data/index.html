@@ -3,32 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>Hello World</title>
+    <style>
+    body {
+        background: url('background.png');
+    }
+    #txt {
+        background: black;
+        color: white;
+        font: sans-serif;
+        font-size: 80px;
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+    }
+    </style>
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
   </head>
-  <body>
-        <h1>Hello, World</h1>
-        <pre>
-    			&nbsp; &nbsp; \
-    			&nbsp; &nbsp; &nbsp;\
-    			&nbsp; &nbsp; &nbsp; \\
-    			&nbsp; &nbsp; &nbsp; &nbsp;\\
-    			&nbsp; &nbsp; &nbsp; &nbsp; &gt;\/7
-    			&nbsp; &nbsp; _.-(6&#39; &nbsp;\
-    			&nbsp; &nbsp;(=___._/` \
-    			&nbsp; &nbsp; &nbsp; &nbsp; ) &nbsp;\ |
-    			&nbsp; &nbsp; &nbsp; &nbsp;/ &nbsp; / |
-    			&nbsp; &nbsp; &nbsp; / &nbsp; &nbsp;&gt; /
-    			&nbsp; &nbsp; &nbsp;j &nbsp; &nbsp;&lt; _\
-    			&nbsp;_.-&#39; : &nbsp; &nbsp; &nbsp;``.
-    			&nbsp;\ r=._\ &nbsp; &nbsp; &nbsp; &nbsp;`.
-    			&lt;`\\_ &nbsp;\ &nbsp; &nbsp; &nbsp; &nbsp; .`-.
-    			&nbsp;\ r-7 &nbsp;`-. ._ &nbsp;&#39; . &nbsp;`\
-    			&nbsp; \`, &nbsp; &nbsp; &nbsp;`-.`7 &nbsp;7) &nbsp; )
-    			&nbsp; &nbsp;\/ &nbsp; &nbsp; &nbsp; &nbsp; \| &nbsp;\&#39; &nbsp;/ `-._
-    			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; || &nbsp; &nbsp;.&#39;
-    			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ,.-&#39; &gt;.&#39;
-    			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;.&#39;_.&#39;&#39;
-    			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;&#39;
-        </pre>
-
+  <body onload="startTime()">
+        <div id="txt"></div>
   </body>
 </html>
