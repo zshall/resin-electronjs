@@ -1,5 +1,5 @@
 {
-  "name": "resin-electronjs",
+  "name": "hotel-tv",
   "version": "1.0.0",
   "description": "electronJS-based resin application",
   "main": "main.js",
@@ -22,7 +22,8 @@
   "dependencies": {
     "electron": "~1.6.16",
     "electron-rebuild": "^1.7.2",
-    "lockfile": "^1.0.4"
+    "lockfile": "^1.0.4",
+    "node-cec": "^0.1.2"
   },
   "author": "Carlo Maria Curinga",
   "license": "Apache-2.0",

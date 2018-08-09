@@ -1,5 +1,6 @@
 const electron = require('electron');
 const path = require('path');
+const {NodeCec, CEC} = require('node-cec');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -132,3 +133,15 @@ app.on('ready', () => {
   // the big red button, here we go
   mainWindow.loadURL(electronConfig.URL_LAUNCHER_URL);
 });
+
+// HDMI CEC
+let cec = new NodeCec('node-cec-monitor');
+
+cec.once('ready', (client) => {
+  client.log('-- READY --');
+  client.sendCommand(0xf0, CEC.Opcode.GIVE_DEVICE_POWER_STATUS);
+});
+
+cec.on('REPORT_POWER_STATUS', (packet, status) => {
+  console.log("POWER STATUS! ", status);
+})
